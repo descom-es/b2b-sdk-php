@@ -1,0 +1,19 @@
+{
+    "name": "descom/b2b-sdk-php",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Descom.es",
+            "email": "soporte@descom.es"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Descom\\B2b\\": "src"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
