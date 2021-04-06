@@ -9,8 +9,8 @@ class Connection implements ConnectionInterface
 {
     private static ?self $instance = null;
 
-    private Client $http;
     private string $token;
+    private Client $http;
 
     public function __construct(string $url, string $token, array $options = [])
     {
@@ -41,7 +41,7 @@ class Connection implements ConnectionInterface
         return static::$instance;
     }
 
-    public function call(string $method, string $uri, array $data = null, array $params = null): Response
+    public function call(string $method, string $uri, ?array $data = null, ?array $params = null): Response
     {
         $response = null;
 
@@ -65,7 +65,7 @@ class Connection implements ConnectionInterface
                 ]);
             }
 
-            $responseContent = $response->getBody()->getContents();
+            $responseContent = $response->getBody()->getContents(); //TODO Devuleve excepción en el show si no existe objeto
 
             return new Response($response->getStatusCode(), $responseContent);
 
