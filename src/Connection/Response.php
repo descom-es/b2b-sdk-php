@@ -41,7 +41,8 @@ class Response
 
     private function responseFailedTemporary(?int $httpStatus): bool
     {
-        return $httpStatus === 503
+        return $httpStatus === 502
+            || $httpStatus === 503
             || $httpStatus === 504
             || $httpStatus === null;
     }
