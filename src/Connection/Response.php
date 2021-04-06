@@ -27,22 +27,25 @@ class Response
         $this->successful = $httpStatus >= 200 && $httpStatus < 300;
 
         if ($this->responseFailedTemporary($httpStatus)) {
-            throw new TemporaryException("{$httpStatus}: {$data}", -1);
+            throw new TemporaryException("{$httpStatus}: {$data}", $httpStatus ?? -1);
         }
 
-        if ($httpStatus === 404) {
-            throw new NotFoundException("{$httpStatus}: {$data}", 404);
-        }
-
-        if ($httpStatus > 299) {
+        if ($this->responseFailedPermanent($httpStatus)) {
             throw new PermanentException("{$httpStatus}: {$data}", $httpStatus);
         }
     }
 
     private function responseFailedTemporary(?int $httpStatus): bool
     {
-        return $httpStatus === 503
+        return $httpStatus === 502
+            || $httpStatus === 503
             || $httpStatus === 504
             || $httpStatus === null;
+    }
+
+    private function responseFailedPermanent(?int $httpStatus): bool
+    {
+        return $httpStatus !== 404
+            && $httpStatus > 299;
     }
 }
