@@ -1,20 +1,19 @@
 <?php
 
-namespace Descom\B2b\Connection\Entities\Customers;
+namespace Descom\B2b\Entities\Customer;
 
-use Descom\B2b\Connection\Api;
-use Descom\B2b\Models\Customers\ShopModel;
-use Descom\B2b\Models\Customers\ClientModel;
+use Descom\B2b\Entities\Api;
+use Descom\B2b\Models\Customer\GroupModel;
 
-class ClientShopApi extends Api
+class GroupApi extends Api
 {
-    private string $uri = '/api/v1/clients';
+    private string $uri = '/api/v1/groups';
 
-    public function index(int $idClient, array $params = []): ?object
+    public function index(array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
-            "$this->uri/$idClient/shops",
+            $this->uri,
             null,
             $params,
         );
@@ -26,11 +25,11 @@ class ClientShopApi extends Api
         return null;
     }
 
-    public function show(int $idClient, int $idShop): ?object
+    public function show(int $id): ?object
     {
         $response = $this->connection->call(
             'GET',
-            "$this->uri/$idClient/shops/$idShop",
+            "$this->uri/$id",
         );
 
         if ($response->successful) {
@@ -40,11 +39,11 @@ class ClientShopApi extends Api
         return null;
     }
 
-    public function store(int $idClient, ShopModel $model): ?object
+    public function store(GroupModel $model): ?object
     {
         $response = $this->connection->call(
             'POST',
-            "$this->uri/$idClient/shops",
+            $this->uri,
             $model->toArray()
         );
 
@@ -55,11 +54,11 @@ class ClientShopApi extends Api
         return null;
     }
 
-    public function update(int $idClient, int $idShop, ShopModel $model): ?object
+    public function update(int $id, GroupModel $model): ?object
     {
         $response = $this->connection->call(
             'PUT',
-            "$this->uri/$idClient/shops/$idShop",
+            "$this->uri/$id",
             $model->toArray()
         );
 
@@ -70,11 +69,11 @@ class ClientShopApi extends Api
         return null;
     }
 
-    public function destroy(int $idClient, int $idShop): ?bool
+    public function destroy(int $id): ?bool
     {
         return $this->connection->call(
             'DELETE',
-            "$this->uri/$idClient/shops/$idShop",
+            "$this->uri/$id",
         )->successful;
     }
 }

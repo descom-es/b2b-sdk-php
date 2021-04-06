@@ -1,19 +1,19 @@
 <?php
 
-namespace Descom\B2b\Connection\Entities\Catalog;
+namespace Descom\B2b\Entities\Customer;
 
-use Descom\B2b\Connection\Api;
-use Descom\B2b\Models\Catalog\BrandModel;
+use Descom\B2b\Entities\Api;
+use Descom\B2b\Models\Customer\ShopModel;
 
-class BrandApi extends Api
+class ClientShopApi extends Api
 {
-    private string $uri = '/api/v1/brands';
+    private string $uri = '/api/v1/clients';
 
-    public function index(array $params = []): ?object
+    public function index(int $idClient, array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
-            $this->uri,
+            "$this->uri/$idClient/shops",
             null,
             $params,
         );
@@ -25,11 +25,11 @@ class BrandApi extends Api
         return null;
     }
 
-    public function show(int $id): ?object
+    public function show(int $idClient, int $idShop): ?object
     {
         $response = $this->connection->call(
             'GET',
-            "$this->uri/$id",
+            "$this->uri/$idClient/shops/$idShop",
         );
 
         if ($response->successful) {
@@ -39,11 +39,11 @@ class BrandApi extends Api
         return null;
     }
 
-    public function store(BrandModel $model): ?object
+    public function store(int $idClient, ShopModel $model): ?object
     {
         $response = $this->connection->call(
             'POST',
-            $this->uri,
+            "$this->uri/$idClient/shops",
             $model->toArray()
         );
 
@@ -54,11 +54,11 @@ class BrandApi extends Api
         return null;
     }
 
-    public function update(int $id, BrandModel $model): ?object
+    public function update(int $idClient, int $idShop, ShopModel $model): ?object
     {
         $response = $this->connection->call(
             'PUT',
-            "$this->uri/$id",
+            "$this->uri/$idClient/shops/$idShop",
             $model->toArray()
         );
 
@@ -69,11 +69,11 @@ class BrandApi extends Api
         return null;
     }
 
-    public function destroy(int $id): ?bool
+    public function destroy(int $idClient, int $idShop): ?bool
     {
         return $this->connection->call(
             'DELETE',
-            "$this->uri/$id",
+            "$this->uri/$idClient/shops/$idShop",
         )->successful;
     }
 }

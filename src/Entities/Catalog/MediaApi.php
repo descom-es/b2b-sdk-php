@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\B2b\Connection\Entities\Catalog;
+namespace Descom\B2b\Entities\Catalog;
 
-use Descom\B2b\Connection\Api;
+use Descom\B2b\Entities\Api;
 use Descom\B2b\Models\Catalog\MediaModel;
 
 class MediaApi extends Api //TODO Revisar todo

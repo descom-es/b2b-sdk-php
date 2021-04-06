@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\B2b\Connection;
+namespace Descom\B2b\Entities;
 
-use Descom\B2b\Models\Model;
+use Descom\B2b\Connection\ConnectionInterface;
 
 abstract class Api
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Descom\B2b\Connection\Entities\Catalog;
+namespace Descom\B2b\Entities\Customer;
 
-use Descom\B2b\Connection\Api;
-use Descom\B2b\Models\Catalog\StockTypeModel;
+use Descom\B2b\Entities\Api;
+use Descom\B2b\Models\Customer\AgentModel;
 
-class StockTypeApi extends Api
+class AgentApi extends Api
 {
-    private string $uri = '/api/v1/stock_types';
+    private string $uri = '/api/v1/agents';
 
     public function index(array $params = []): ?object
     {
@@ -39,7 +39,7 @@ class StockTypeApi extends Api
         return null;
     }
 
-    public function store(StockTypeModel $model): ?object
+    public function store(AgentModel $model): ?object
     {
         $response = $this->connection->call(
             'POST',
@@ -54,7 +54,7 @@ class StockTypeApi extends Api
         return null;
     }
 
-    public function update(int $id, StockTypeModel $model): ?object
+    public function update(int $id, AgentModel $model): ?object
     {
         $response = $this->connection->call(
             'PUT',

@@ -1,13 +1,13 @@
 <?php
 
-namespace Descom\B2b\Connection\Entities\Customers;
+namespace Descom\B2b\Entities\Catalog;
 
-use Descom\B2b\Connection\Api;
-use Descom\B2b\Models\Customers\AgentModel;
+use Descom\B2b\Entities\Api;
+use Descom\B2b\Models\Catalog\CategoryModel;
 
-class AgentApi extends Api
+class CategoryApi extends Api
 {
-    private string $uri = '/api/v1/agents';
+    private string $uri = '/api/v1/categories';
 
     public function index(array $params = []): ?object
     {
@@ -39,7 +39,7 @@ class AgentApi extends Api
         return null;
     }
 
-    public function store(AgentModel $model): ?object
+    public function store(CategoryModel $model): ?object
     {
         $response = $this->connection->call(
             'POST',
@@ -54,7 +54,7 @@ class AgentApi extends Api
         return null;
     }
 
-    public function update(int $id, AgentModel $model): ?object
+    public function update(int $id, CategoryModel $model): ?object
     {
         $response = $this->connection->call(
             'PUT',
