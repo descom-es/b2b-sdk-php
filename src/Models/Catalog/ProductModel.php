@@ -16,4 +16,5 @@ class ProductModel extends Model
     public bool $visibility;
     public ?int $parent_id;
     public array $attribute_options;
+    public ?int $brand_id;
 }
