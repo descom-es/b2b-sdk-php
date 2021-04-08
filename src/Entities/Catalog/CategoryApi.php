@@ -9,11 +9,13 @@ class CategoryApi extends Api
 {
     private string $uri = '/api/v1/categories';
 
-    public function index(): ?object
+    public function index(array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
             $this->uri,
+            null,
+            $params,
         );
 
         if ($response->successful) {

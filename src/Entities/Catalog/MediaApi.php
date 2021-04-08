@@ -9,11 +9,13 @@ class MediaApi extends Api //TODO Revisar todo
 {
     private string $uri = '/api/v1/medias';
 
-    public function index(): ?object
+    public function index(array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
             $this->uri,
+            null,
+            $params,
         );
 
         if ($response->successful) {

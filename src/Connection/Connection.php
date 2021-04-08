@@ -41,11 +41,13 @@ class Connection implements ConnectionInterface
         return static::$instance;
     }
 
-    public function call(string $method, string $uri, ?array $data = null): Response
+    public function call(string $method, string $uri, ?array $data = null, ?array $params = null): Response
     {
         $response = null;
 
         try {
+            $uri .= ($params) ? $this->getStrParams($params): '';
+
             if (!$data)
             {
                 $response = $this->http->request($method, $uri, [
@@ -75,5 +77,19 @@ class Connection implements ConnectionInterface
                 'data'    => $data,
             ]));
         }
+    }
+
+    private function getStrParams(array $params = []): string
+    {
+        $strParams = '';
+
+        $i = 0;
+        foreach($params as $key => $value)
+        {
+            $strParams .= ($i===0) ? "?$key=$value" : "&$key=$value";
+            $i++;
+        }
+
+        return $strParams;
     }
 }

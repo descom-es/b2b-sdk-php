@@ -9,11 +9,13 @@ class ClientShopApi extends Api
 {
     private string $uri = '/api/v1/clients';
 
-    public function index(int $idClient): ?object
+    public function index(int $idClient, array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idClient/shops",
+            null,
+            $params,
         );
 
         if ($response->successful) {

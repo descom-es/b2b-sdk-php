@@ -9,11 +9,13 @@ class AttributeOptionApi extends Api
 {
     private string $uri = '/api/v1/attributes';
 
-    public function index(int $idAttribute): ?object
+    public function index(int $idAttribute, array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idAttribute/options",
+            null,
+            $params,
         );
 
         if ($response->successful) {

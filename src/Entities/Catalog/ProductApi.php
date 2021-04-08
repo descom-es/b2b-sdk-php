@@ -10,11 +10,13 @@ class ProductApi extends Api
 {
     private string $uri = '/api/v1/products';
 
-    public function index(): ?object
+    public function index(array $params = []): ?object
     {
         $response = $this->connection->call(
             'GET',
             $this->uri,
+            null,
+            $params,
         );
 
         if ($response->successful) {

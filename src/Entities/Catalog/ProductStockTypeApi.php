@@ -9,11 +9,13 @@ class ProductStockTypeApi extends Api
 {
     private string $uri = '/api/v1/products';
 
-    public function index(int $idProduct): ?array
+    public function index(int $idProduct, array $params = []): ?array
     {
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idProduct/stock_types",
+            null,
+            $params,
         );
 
         if ($response->successful) {
