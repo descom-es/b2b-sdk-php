@@ -7,9 +7,9 @@ use Descom\B2b\Models\Catalog\AttributeOptionModel;
 
 class AttributeOptionApi extends Api
 {
-    private string $uri = '/api/v1/attribute';
+    private string $uri = '/api/v1/attributes';
 
-    public function index(int $idAttribute): ?array
+    public function index(int $idAttribute): ?object
     {
         $response = $this->connection->call(
             'GET',
