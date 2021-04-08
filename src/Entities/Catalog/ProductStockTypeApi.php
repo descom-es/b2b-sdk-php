@@ -3,6 +3,7 @@
 namespace Descom\B2b\Entities\Catalog;
 
 use Descom\B2b\Entities\Api;
+use Descom\B2b\Models\Catalog\ProductStockTypeModel;
 
 class ProductStockTypeApi extends Api
 {
@@ -24,14 +25,12 @@ class ProductStockTypeApi extends Api
         return null;
     }
 
-    public function attach(int $idProduct, int $idCategory, int $stock): ?array
+    public function attach(int $idProduct, int $idCategory, ProductStockTypeModel $model): ?array
     {
         $response = $this->connection->call(
             'PUT',
             "$this->uri/$idProduct/stock_types/$idCategory",
-            [
-                'stock' => $stock,
-            ]
+            $model->toArray()
         );
 
         if ($response->successful) {
