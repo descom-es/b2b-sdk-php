@@ -9,13 +9,11 @@ class BrandApi extends Api
 {
     private string $uri = '/api/v1/brands';
 
-    public function index(array $params = []): ?object
+    public function index(): ?object
     {
         $response = $this->connection->call(
             'GET',
             $this->uri,
-            null,
-            $params,
         );
 
         if ($response->successful) {

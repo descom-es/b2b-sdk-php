@@ -9,13 +9,12 @@ class ClientApi extends Api
 {
     private string $uri = '/api/v1/clients';
 
-    public function index(array $params = []): ?object
+    public function index(): ?object
     {
         $response = $this->connection->call(
             'GET',
             $this->uri,
             [],
-            $params,
         );
 
         if ($response->successful) {

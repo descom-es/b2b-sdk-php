@@ -8,13 +8,11 @@ class ProductMediaApi extends Api
 {
     private string $uri = '/api/v1/products';
 
-    public function index(int $idProduct, array $params = []): ?array
+    public function index(int $idProduct): ?array
     {
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idProduct/medias",
-            null,
-            $params,
         );
 
         if ($response->successful) {
