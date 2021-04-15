@@ -14,7 +14,7 @@ class ClientShopApi extends Api
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idClient/shops",
-            null,
+            [],
             $params,
         );
 

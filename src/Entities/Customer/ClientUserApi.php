@@ -14,7 +14,7 @@ class ClientUserApi extends Api
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idClient/users",
-            null,
+            [],
             $params,
         );
 

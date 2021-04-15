@@ -13,7 +13,7 @@ class ProductCategoryApi extends Api
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idProduct/categories",
-            null,
+            [],
             $params,
         );
 

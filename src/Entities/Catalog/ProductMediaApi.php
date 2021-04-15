@@ -13,7 +13,7 @@ class ProductMediaApi extends Api
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idProduct/medias",
-            null,
+            [],
             $params,
         );
 

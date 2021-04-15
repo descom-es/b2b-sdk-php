@@ -14,7 +14,7 @@ class ProductStockTypeApi extends Api
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idProduct/stock_types",
-            null,
+            [],
             $params,
         );
 

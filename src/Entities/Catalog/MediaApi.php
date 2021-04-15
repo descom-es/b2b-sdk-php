@@ -14,7 +14,7 @@ class MediaApi extends Api //TODO Revisar todo
         $response = $this->connection->call(
             'GET',
             $this->uri,
-            null,
+            [],
             $params,
         );
 
@@ -44,11 +44,9 @@ class MediaApi extends Api //TODO Revisar todo
         $response = $this->connection->call(
             'POST',
             $this->uri,
-            [
-                'multipart' => [
-                    $model->toArray()
-                ]
-            ]
+            [],
+            [],
+            [$model->toArray()]
         );
 
         if ($response->successful) {

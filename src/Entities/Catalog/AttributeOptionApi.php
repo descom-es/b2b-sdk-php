@@ -14,7 +14,7 @@ class AttributeOptionApi extends Api
         $response = $this->connection->call(
             'GET',
             "$this->uri/$idAttribute/options",
-            null,
+            [],
             $params,
         );
 
