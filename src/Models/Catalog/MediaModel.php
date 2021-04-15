@@ -12,7 +12,7 @@ use Descom\B2b\Models\Model;
  */
 class MediaModel extends Model
 {
-    public string $name; // 
+    public string $name = 'image'; //
     public $contents; // .
     public ?array $headers; // .
     public ?string $filename; // .
