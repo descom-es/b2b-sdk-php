@@ -41,29 +41,29 @@ class Connection implements ConnectionInterface
         return static::$instance;
     }
 
-    public function call(string $method, string $uri, ?array $data = null, ?array $params = null): Response
+    public function call(string $method, string $uri, array $data = [], array $params = [], array $multiparts = []): Response
     {
         $response = null;
 
         try {
             $uri .= ($params) ? $this->getStrParams($params): '';
 
-            if (!$data)
-            {
-                $response = $this->http->request($method, $uri, [
-                    'headers' => [
-                        'Authorization' => "Bearer {$this->token}",
-                    ],
-                ]);
+            $options = [
+                'headers' => [
+                    'Authorization' => "Bearer {$this->token}",
+                ],
+            ];
+
+            if ($data) {
+               $options['json'] = $data;
             }
-            else{
-                $response = $this->http->request($method, $uri, [
-                    'headers' => [
-                        'Authorization' => "Bearer {$this->token}",
-                    ],
-                    'json' => $data,
-                ]);
-            }
+
+            if ($multiparts) {
+                $options['multipart'] = $multiparts;
+             }
+
+
+            $response = $this->http->request($method, $uri, $options);
 
             $responseContent = $response->getBody()->getContents(); //TODO Devuleve excepción en el show si no existe objeto
 
