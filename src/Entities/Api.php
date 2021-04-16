@@ -13,6 +13,12 @@ abstract class Api
         $this->connection = $connection;
     }
 
+    /**
+     * Obtiene una instancia de la API
+     *
+     * @param ConnectionInterface $connection
+     * @return static
+     */
     public static function getInstance(ConnectionInterface $connection): self
     {
         return new static($connection);
