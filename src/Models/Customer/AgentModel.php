@@ -6,6 +6,6 @@ use Descom\B2b\Models\Model;
 
 class AgentModel extends Model
 {
-    public UserModel $user;
+    public array $user;
     public array $clients;
 }
