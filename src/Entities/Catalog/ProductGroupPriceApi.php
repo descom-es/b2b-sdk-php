@@ -14,7 +14,7 @@ class ProductGroupPriceApi extends Api
     {
         $response = $this->connection->call(
             'PUT',
-            "{$this->uri}/{$idProduct}/groups/{$idGroup}",
+            "{$this->uri}/{$idProduct}/groups/{$idGroup}/prices",
             $model->toArray()
         );
 
@@ -29,7 +29,7 @@ class ProductGroupPriceApi extends Api
     {
         $response = $this->connection->call(
             'DELETE',
-            "{$this->uri}/{$idProduct}/groups/{$idGroup}",
+            "{$this->uri}/{$idProduct}/groups/{$idGroup}/prices",
         );
 
         if ($response->successful) {
