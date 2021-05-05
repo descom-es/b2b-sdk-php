@@ -17,4 +17,7 @@ class ProductModel extends Model
     public ?int $parent_id;
     public array $attribute_options;
     public ?int $brand_id;
+    public ?bool $in_stock;
+    public ?int $quantity;
+    public ?int $quantity_in_manufacture;
 }
