@@ -10,7 +10,7 @@ class ProductGroupPriceApi extends Api
     private string $uri = '/api/v1/products';
 
 
-    public function update(int $idProduct, int $idGroup, ProductGroupPriceModel $model): ?array
+    public function update(int $idProduct, int $idGroup, ProductGroupPriceModel $model): ?object
     {
         $response = $this->connection->call(
             'PUT',
