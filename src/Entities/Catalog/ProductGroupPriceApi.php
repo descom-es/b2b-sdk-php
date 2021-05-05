@@ -10,7 +10,7 @@ class ProductGroupPriceApi extends Api
     private string $uri = '/api/v1/products';
 
 
-    public function attach(int $idProduct, int $idGroup, ProductGroupPriceModel $model): ?array
+    public function update(int $idProduct, int $idGroup, ProductGroupPriceModel $model): ?array
     {
         $response = $this->connection->call(
             'PUT',
@@ -25,7 +25,7 @@ class ProductGroupPriceApi extends Api
         return null;
     }
 
-    public function detach(int $idProduct, int $idGroup): int
+    public function destroy(int $idProduct, int $idGroup): int
     {
         $response = $this->connection->call(
             'DELETE',
